@@ -29,6 +29,26 @@ const list = [
   },
 ];
 
+function List() {
+  return(
+    <div>
+      {list.map(function(item){
+        return(
+          <div key={item.id}>
+            <span>
+              <a href={item.url}>
+                {item.name}
+              </a>
+            </span>
+            <span> {item.surname} </span>
+            <span> {item.city} </span>
+            <span> {item.age} </span>
+          </div>);
+        })}
+    </div>
+      );
+}
+
 function App() {
 
   return(
@@ -41,21 +61,8 @@ function App() {
       </h1>
       <label htmlFor="search"> Search: </label>
       <input id="search" type="text"/>
-      <hr/>
-      {list.map(function(item){
-        return (
-          <div key={item.id}>
-            <span>
-              <a href={item.url}>
-                {item.name}
-              </a>
-            </span>
-            <span> {item.surname} </span>
-            <span> {item.city} </span>
-            <span> {item.age} </span>
-          </div>
-        );
-      })}
+      <hr />
+      <List/>
     </div>
   );
 }
