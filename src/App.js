@@ -10,19 +10,52 @@ function getTitle(title){
   return title;
 }
 
+const list = [
+  {
+  name: "Mario",
+  surname: "Ramirez",
+  city: "Mexico City",
+  age: 35,
+  id: 1,
+  url: "www.geomario.com",
+  },
+  {
+  name: "Daniel",
+  surname: "Lua",
+  city: "Guadalajara",
+  age: 40,
+  id: 2,
+  url: "www.interioreslua.com",
+  },
+];
 
 function App() {
 
   return(
     <div>
       <h1>
-        {welcome.greeting} {welcome.title}
+        My Hacker Stories
       </h1>
       <h1>
         Hello {getTitle("Java Function")}
       </h1>
       <label htmlFor="search"> Search: </label>
       <input id="search" type="text"/>
+      <hr/>
+      {list.map(function(item){
+        return (
+          <div key={item.id}>
+            <span>
+              <a href={item.url}>
+                {item.name}
+              </a>
+            </span>
+            <span> {item.surname} </span>
+            <span> {item.city} </span>
+            <span> {item.age} </span>
+          </div>
+        );
+      })}
     </div>
   );
 }
