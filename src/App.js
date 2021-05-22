@@ -1,36 +1,38 @@
 import React from 'react';
 import './App.css';
 
+// Constant Component
 const welcome = {
   greeting: "Hola",
   title: "React",
 };
 
+// Java Function
 function getTitle(title){
   return title;
 }
 
-const list = [
-  {
-  name: "Mario",
-  surname: "Ramirez",
-  city: "Mexico City",
-  age: 35,
-  id: 1,
-  url: "www.geomario.com",
-  },
-  {
-  name: "Daniel",
-  surname: "Lua",
-  city: "Guadalajara",
-  age: 40,
-  id: 2,
-  url: "www.interioreslua.com",
-  },
-];
-
 // Root Component (Function Component)
 function App() {
+  const stories = [
+    {
+      name: "Mario",
+      surname: "Ramirez",
+      city: "Mexico City",
+      age: 35,
+      id: 1,
+      url: "www.geomario.com",
+    },
+    {
+      name: "Daniel",
+      surname: "Lua",
+      city: "Guadalajara",
+      age: 40,
+      id: 2,
+      url: "www.interioreslua.com",
+    },
+  ];
+
   const handleChange = (event) => {
     console.log(event.target.value);
   };
@@ -45,16 +47,16 @@ function App() {
       <label htmlFor="search"> Search: </label>
       <input id="search" type="text" onChange={handleChange}/>
       <hr />
-      <List/>
+      <List list={stories}/>
     </div>
   );
 }
 
 // Child Component (Function Component)
-function List() {
+function List(props) {
   return(
     <div>
-      {list.map(function(item){
+      {props.list.map(function(item){
         return(
           <div key={item.id}>
             <span>
