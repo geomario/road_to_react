@@ -14,6 +14,9 @@ function getTitle(title){
 
 // Root Component (Function Component)
 function App() {
+  const handleSearch = event => {
+    console.log(event.target.value);
+  }
   const stories = [
     {
       name: "Mario",
@@ -32,24 +35,18 @@ function App() {
       url: "www.interioreslua.com",
     },
   ];
-  const [searchTerm, setSearchTerm] = React.useState("");
-
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
   return(
     <div>
       <h1>
+        {welcome.greeting} {welcome.title}
+      </h1>
+      <h2>
         My Hacker Stories
-      </h1>
-      <h1>
+      </h2>
+      <Search onSearch={handleSearch}/>
+      <h2>
         Hello {getTitle("Java Function")}
-      </h1>
-      <label htmlFor="search"> Search: </label>
-      <input id="search" type="text" onChange={handleChange}/>
-      <p>
-        Searching for <strong> {searchTerm} </strong>
-      </p>
+      </h2>
       <hr />
       <List list={stories}/>
     </div>
@@ -76,4 +73,24 @@ function List(props) {
       </div>
     );
   }
+
+
+function Search(props) {
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    props.onSearch(event);
+  } ;
+  return(
+    <div>
+      <label htmlFor="search">
+        Search:
+      </label>
+      <input id="search" type="text" onChange={handleChange}/>
+      <p>
+        Searching for: <strong>{searchTerm}</strong>
+    </p>
+    </div>
+  );
+}
 export default App;
