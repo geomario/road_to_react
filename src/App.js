@@ -6,6 +6,10 @@ const welcome = {
   title: "React",
 };
 
+function getTitle(title){
+  return title;
+}
+
 
 function App() {
 
@@ -13,6 +17,9 @@ function App() {
     <div>
       <h1>
         {welcome.greeting} {welcome.title}
+      </h1>
+      <h1>
+        Hello {getTitle("Java Function")}
       </h1>
       <label htmlFor="search"> Search: </label>
       <input id="search" type="text"/>
